@@ -15,4 +15,12 @@ class Restaurant < ApplicationRecord
   enum status: { closed: 0, open: 1 }
 
   has_one_attached :image
+
+  geocoded_by :adress
+  after_validation :geocode
+  # The gem will consult some services to get latitude and longitude values based on the adress
+  def adress
+    [street, number, city, state].compact.join(', ')
+    # Puts all adress information together
+  end
 end
