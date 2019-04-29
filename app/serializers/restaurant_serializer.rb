@@ -23,5 +23,6 @@ class RestaurantSerializer < ActiveModel::Serializer
 
   def category_title
     "cozinha #{object.category&.title}"
+    # Returns the title of the category 
   end
 end
