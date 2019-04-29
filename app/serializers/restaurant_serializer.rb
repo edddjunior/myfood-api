@@ -3,7 +3,8 @@ class RestaurantSerializer < ActiveModel::Serializer
   # We added this line to use the helper method "rails_blob_url"
 
   attributes :id, :name, :description, :review, :status, :delivery_tax, :state,
-  :city, :street, :neighborhood, :number, :complement, :reference, :zip_code, :image_url
+  :city, :street, :neighborhood, :number, :complement, :reference, :zip_code, :image_url, :category_title
+
   # The fields we want to be rendered when the object is rendered
 
   has_many :product_categories, if -> { @instance_options[:product_categories] }
@@ -18,5 +19,9 @@ class RestaurantSerializer < ActiveModel::Serializer
     object.reviews&.average(:value)
     # Here we take all the reviews (value) associated to the restaurant (object) and get an average
     # "&" ensures we'll just make the average if there are any values associated to the restaurant. If there aren't, it returns nil
+  end
+
+  def category_title
+    "cozinha #{object.category&.title}"
   end
 end
