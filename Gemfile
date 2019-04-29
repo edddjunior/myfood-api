@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Custom rubygems
+gem 'dotenv-rails' # To setup environment variables
+gem 'ransack' # To make searches
+gem 'geocoder', '~> 1.5', '>= 1.5.1' # To add geolocation feature
+gem 'active_model_serializers', '~> 0.10.2' # To serialize json data
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
