@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
       render json: @order, status: :created
     else
       render json: order.errors, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -17,8 +18,9 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(
         :name, :phone_number, :restaurant_id,
-        order_products_attributes: %i[quantity comment product_id])
-        # order_products_attributes is the array with attributes from order_products
+        order_products_attributes: %i[quantity comment product_id]
+      )
+      # order_products_attributes is the array with attributes from order_products
     end
 
     def set_order

@@ -27,6 +27,7 @@ class RestaurantsController < ApplicationController
     def filter_by_category
       @restaurants = @restaurants.select do |r|
         r.category.title == params[:category]
+      end
       # This verifies if the restaurant's category title is equal to the category that was chosen by the user
       # and then fills the variable with corresponding data
     end

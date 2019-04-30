@@ -7,7 +7,7 @@ class RestaurantSerializer < ActiveModel::Serializer
 
   # The fields we want to be rendered when the object is rendered
 
-  has_many :product_categories, if -> { @instance_options[:product_categories] }
+  has_many :product_categories, if: -> { @instance_options[:product_categories] }
   # The product_categories will be rendered just if we want them. If we don't, they'll not
 
   def image_url
@@ -23,6 +23,6 @@ class RestaurantSerializer < ActiveModel::Serializer
 
   def category_title
     "cozinha #{object.category&.title}"
-    # Returns the title of the category 
+    # Returns the title of the category
   end
 end
