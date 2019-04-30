@@ -5,6 +5,8 @@ class Restaurant < ApplicationRecord
   has_many :orders
   has_many :reviews
 
+  has_one_attached :image
+
   validates_associated :category
   validates :name, presence: true
   validates :status, presence: true
@@ -13,8 +15,6 @@ class Restaurant < ApplicationRecord
   validates :street, presence: true
 
   enum status: { closed: 0, open: 1 }
-
-  has_one_attached :image
 
   geocoded_by :adress
   after_validation :geocode

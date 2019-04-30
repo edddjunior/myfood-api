@@ -1,11 +1,11 @@
 class Order < ApplicationRecord
   before_validation :set_price
 
+  belongs_to :restaurant
+
   has_many :order_products
   accepts_nested_attributes_for :order_products, allow_destroy: true
   # When we create an order, we'll accept the attributes from order_products too
-
-  belongs_to :restaurant
 
   validates :name, presence: true
   validates :phone_number, presence: true
